@@ -1,0 +1,68 @@
+# SPDX-FileCopyrightText: 2025 Paul Colby <git@colby.id.au>
+# SPDX-License-Identifier: MIT
+
+name: Package
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions: { } # ie none.
+
+jobs:
+  pkg:
+    name: AppImage
+    runs-on: ubuntu-22.04 # Last LTS release with libwebkit2gtk-4.0.so.37 library (as required by sdkmanager).
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt update && sudo apt upgrade
+          sudo apt install imagemagick libwebkit2gtk-4.0-37
+      - name: Install linuxdeploy
+        uses: pcolby/install-linuxdeploy@v1
+        with:
+          plugins: gtk
+      - name: Download SDK manager
+        id: download
+        run: |
+          curl --create-dirs --fail --location --output 'sdkmanager.zip' --remote-name --silent \
+            --write-out '[%{urlnum}][%{http_code}] %{errormsg}: %{url}\n' \
+            'https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip'
+          unzip 'sdkmanager.zip' -d "sdkmanager"
+          sed -Ene '0,/version/ s|.*>Version (.*)<.*|version=\1|p' 'sdkmanager/share/sdkmanager/changes.html' |
+            tee -a "${GITHUB_OUTPUT}"
+      - name: Install SDK manager
+        run: | # Logically equivalent to `make install` in the AppImage docs.
+          mkdir -p 'AppDir/usr/share'
+          mv 'sdkmanager/bin' 'AppDir/usr/bin'
+          mv 'sdkmanager/share/sdkmanager' 'AppDir/usr/share/AppRun'
+          [[ ! "$(find 'sdkmanager' -type f -print -quit)" ]] || { echo 'Found leftovers:'; find 'sdkmanager'; false; }
+      - name: Build AppImage
+        run: |
+          convert 'AppDir/usr/share/AppRun/connectiq-icon.png' -gravity Center -crop '192x192+0+0' 'sdkmanager.png'
+          # See https://specifications.freedesktop.org/desktop-entry-spec/latest/recognized-keys.html
+          cat > 'sdkmanager.desktop' <<-'-'
+          [Desktop Entry]
+          Type=Application
+          Version=1.5
+          Name=Connect IQ SDK Manager
+          Comment=Add/remove Connect IQ SDKs
+          Icon=sdkmanager
+          Exec=sdkmanager
+          Terminal=false
+          Categories=Development
+          Keywords=Garmin
+          SingleMainWindow=true
+          -
+          linuxdeploy-x86_64.AppImage --appdir 'AppDir' --desktop-file 'sdkmanager.desktop' \
+            --executable 'AppDir/usr/bin/sdkmanager' --icon-file 'sdkmanager.png' --plugin gtk --output appimage
+        env:
+          LINUXDEPLOY_OUTPUT_VERSION: ${{ steps.download.outputs.version }}+${{ github.run_number }}
+      - run: find .
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: connectiq-sdk-manager-${{ steps.download.outputs.version }}+${{ github.run_number }}.AppImage
+          path: Connect_IQ_SDK_Manager-${{ steps.download.outputs.version }}+${{ github.run_number }}-x86_64.AppImage
+          if-no-files-found: error

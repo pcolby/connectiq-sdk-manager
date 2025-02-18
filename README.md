@@ -29,7 +29,7 @@ sudo ln -sf webkit2gtk-4.1 /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0
 Once the symlink is in place, simply download the latest AppImage from the [releases][] page, unzip, and run :tada:
 
 ```sh
-# \todo curl ...
+wget 'https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/connectiq-sdk-manager-1.0.13+50.AppImage.zip'
 unzip connectiq-sdk-manager-*.AppImage.zip
 ./Connect_IQ_SDK_Manager-*-x86_64.AppImage
 ```

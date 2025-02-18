@@ -5,10 +5,10 @@ or later.
 
 ## Why
 
-The problem is that the *proprietary* [SDK Manager][] has a runtime link dependency on an old `webkit2gtk-4.0` library,
+The problem is that the *proprietary* [SDK Manager][] has a runtime link dependency to an old `webkit2gtk-4.0` library,
 which Ubuntu stopped shipping sometime before 24.04, but [Garmin][] has still not updated the application to use a more
-recent version.  Because [SDK Manager][] is closed source, we cannot simply modify it. However, *can* package it into an
-[AppImage][], along with ~all~ most of its dependencies.
+recent version.  Because [SDK Manager][] is closed source, we cannot simply modify it. However, we *can* package it into
+an [AppImage][], along with ~all~ most of its dependencies.
 
 ## How to Use
 

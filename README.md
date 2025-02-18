@@ -43,6 +43,7 @@ unzip connectiq-sdk-manager-*.AppImage.zip
 [Connect IQ]: https://developer.garmin.com/connect-iq/overview/
 [Connect IQ SDK license]: https://developer.garmin.com/connect-iq/sdk/
 [Garmin]: https://www.garmin.com/
-[SDK Manager]: https://developer.garmin.com/connect-iq/sdk/
-[releases]: https://github.com/pcolby/connectiq-sdk-manager/releases
 [MIT license]: LICENSE.md
+[releases]: https://github.com/pcolby/connectiq-sdk-manager/releases
+[SDK Manager]: https://developer.garmin.com/connect-iq/sdk/
+[Ubuntu 24.04]: https://ubuntu.com/blog/tag/ubuntu-24-04-lts

@@ -1,6 +1,6 @@
 # Connect IQ SDK Manager AppImage
 
-tl;dr Allows you to run [Garmin][]'s [Connect IQ][] [SDK Manager][] on modern Linxu machines, such as [Ubuntu 24.04][]
+tl;dr Allows you to run [Garmin][]'s [Connect IQ][] [SDK Manager][] on modern Linux machines, such as [Ubuntu 24.04][]
 or later.
 
 ## Why

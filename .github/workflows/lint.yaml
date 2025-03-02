@@ -4,12 +4,13 @@ on:
   pull_request:
   push:
 
-permissions:
-  contents: read
+permissions: { } # ie none.
 
 jobs:
-  yamllint:
+  check:
+    name: Check
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - run: shellcheck --enable=all --norc *.sh
       - run: yamllint .

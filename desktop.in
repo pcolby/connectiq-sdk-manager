@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=${AppDirName}
+Icon=${AppDirIcon}
+Exec=${AppDirExec}
+Terminal=false
+Categories=Development
+Keywords=Garmin
+SingleMainWindow=true

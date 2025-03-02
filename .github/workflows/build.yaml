@@ -1,0 +1,70 @@
+# SPDX-FileCopyrightText: 2025 Paul Colby <git@colby.id.au>
+# SPDX-License-Identifier: MIT
+
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions: { } # ie none.
+
+jobs:
+  pkg:
+    name: AppImage
+    runs-on: ubuntu-22.04 # Last LTS release with libwebkit2gtk-4.0.so.37 library (as required by sdkmanager).
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-mark hold firefox grub-efi-amd64-signed
+          sudo apt update && sudo apt upgrade
+          sudo apt install imagemagick libwebkit2gtk-4.0-37
+      - name: Install linuxdeploy
+        uses: pcolby/install-linuxdeploy@v1
+        with:
+          plugins: gtk
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build AppImage
+        id: appimage
+        run: |
+          ./build-appimage.sh "${SDK_VERSION}"
+          ls -1 Connect_IQ_*.AppImage | sed -Ee 's/^Connect_IQ_([^-]+)-/\L\1\E=&/' | tee -a "${GITHUB_OUTPUT}"
+        env:
+          BUILD_ID: ${{ github.run_number }}
+          SDK_VERSION: ${{ matrix.sdk }}
+      - run: find .
+      - name: Upload SDK Manager AppImage
+        if: matrix.sdk == 'manager'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.appimage.outputs.sdk_manager }}
+          path: ${{ steps.appimage.outputs.sdk_manager }}
+          if-no-files-found: error
+      - name: Upload Monkey Motion AppImage
+        if: matrix.sdk != 'manager'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.appimage.outputs.monkey_motion }}
+          path: ${{ steps.appimage.outputs.monkey_motion }}
+          if-no-files-found: error
+      - name: Upload Simulator AppImage
+        if: matrix.sdk != 'manager'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.appimage.outputs.simulator }}
+          path: ${{ steps.appimage.outputs.simulator }}
+          if-no-files-found: error
+    strategy:
+      matrix:
+        # Only the latest major releases (ie excluding the available earlier minor and patch releases, for brevity).
+        # Tip: curl https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json | jq -r \
+        #        '[.[].version|[split(".")[]|tonumber]]|group_by(.[0])[]|max|"          - "+join(".")'
+        sdk:
+          - manager
+          # 3.2.5 Requires libwebkitgtk-1.0.so.0, which is too old for GitHub Actions runners.
+          - 4.2.4
+          - 6.4.2
+          - 7.4.3
+          - 8.0.0
+      fail-fast: false

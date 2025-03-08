@@ -69,10 +69,25 @@ jobs:
           - 8.1.0
       fail-fast: false
 
-  release:
-    name: Release
+  draft:
+    name: Draft Release
     #permissions:
     needs: pkg
+    #if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Create draft release
+        run: gh release create "${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+
+  release:
+    name: Release artifacts
+    #permissions:
+    needs:
+      - draft
+      - pkg
     #if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
@@ -81,6 +96,7 @@ jobs:
         with:
           pattern: '*.AppImage'
       - name: Release AppImages
-        run: gh release create "${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
+        run: gh release upload "${GITHUB_REF_NAME}" *.AppImage --repo "${GITHUB_REPOSITORY}"
         env:
+          GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}

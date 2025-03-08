@@ -73,11 +73,13 @@ jobs:
     name: Draft release
     permissions:
       contents: write
-    #if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
       - name: Create draft release
-        run: gh release create "test-${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
+        run: >
+          gh release view "test-${GITHUB_REF_NAME}" ||
+          gh release create "test-${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
@@ -89,7 +91,7 @@ jobs:
     needs:
       - draft
       - pkg
-    #if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
       - name: Download AppImages

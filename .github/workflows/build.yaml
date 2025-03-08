@@ -98,7 +98,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           pattern: '*.AppImage'
-      - run: find . -type f
       - name: Release AppImages
         run: gh release upload "${GITHUB_REF_NAME}" *.AppImage/*.AppImage --repo "${GITHUB_REPOSITORY}"
         env:

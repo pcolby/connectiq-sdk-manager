@@ -72,7 +72,6 @@ jobs:
   draft:
     name: Draft Release
     #permissions:
-    needs: pkg
     #if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:

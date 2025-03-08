@@ -71,7 +71,8 @@ jobs:
 
   draft:
     name: Draft Release
-    #permissions:
+    permissions:
+      contents: write
     #if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
@@ -83,7 +84,8 @@ jobs:
 
   release:
     name: Release artifacts
-    #permissions:
+    permissions:
+      contents: write
     needs:
       - draft
       - pkg

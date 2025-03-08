@@ -98,7 +98,7 @@ jobs:
           pattern: '*.AppImage'
       - run: find . -type f
       - name: Release AppImages
-        run: gh release upload "test-${GITHUB_REF_NAME}" *.AppImage --repo "${GITHUB_REPOSITORY}"
+        run: gh release upload "test-${GITHUB_REF_NAME}" *.AppImage/*.AppImage --repo "${GITHUB_REPOSITORY}"
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}

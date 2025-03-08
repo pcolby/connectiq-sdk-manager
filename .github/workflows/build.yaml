@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Create draft release
-        run: gh release create "${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
+        run: gh release create "${GITHUB_REF_NAME}" --draft --generate-notes #--verify-tag
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}

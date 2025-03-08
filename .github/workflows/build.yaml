@@ -78,8 +78,8 @@ jobs:
     steps:
       - name: Create draft release
         run: >
-          gh release view "test-${GITHUB_REF_NAME}" ||
-          gh release create "test-${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
+          gh release view "${GITHUB_REF_NAME}" ||
+          gh release create "${GITHUB_REF_NAME}" --draft --generate-notes --verify-tag
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
@@ -100,7 +100,7 @@ jobs:
           pattern: '*.AppImage'
       - run: find . -type f
       - name: Release AppImages
-        run: gh release upload "test-${GITHUB_REF_NAME}" *.AppImage/*.AppImage --repo "${GITHUB_REPOSITORY}"
+        run: gh release upload "${GITHUB_REF_NAME}" *.AppImage/*.AppImage --repo "${GITHUB_REPOSITORY}"
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}

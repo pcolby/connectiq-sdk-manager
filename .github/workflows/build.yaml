@@ -73,7 +73,7 @@ jobs:
     name: Draft release
     permissions:
       contents: write
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
       - name: Create draft release
@@ -91,7 +91,7 @@ jobs:
     needs:
       - draft
       - pkg
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     steps:
       - name: Download AppImages
@@ -99,7 +99,7 @@ jobs:
         with:
           pattern: '*.AppImage'
       - name: Release AppImages
-        run: gh release upload "${GITHUB_REF_NAME}" *.AppImage/*.AppImage --repo "${GITHUB_REPOSITORY}"
+        run: gh release upload "${GITHUB_REF_NAME}" *.AppImage/*.AppImage
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}

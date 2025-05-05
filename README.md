@@ -50,7 +50,7 @@ excellent [linuxdeploy][] utility to bundle the [SDK Manager][], along with all 
 into a single [AppImage].
 
 Unfortunately that is not quite enough, hence the symlink mentioned above. The reason is that first time you run the
-the [SDK Manager][], it will present a _Connect IQ License Agreement_ dialog, which you must accept before proceding.
+the [SDK Manager][], it will present a "Connect IQ License Agreement" dialog, which you must accept before proceding.
 This dialog uses a webkit instance to render, and so the `libwebkit2gtk-4.0.so.37` library tries to invoke
 `/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitNetworkProcess`, which of course, does not exist, and cannot be simply
 included in the AppImage. However, if you have the newer `libwebkit2gtk-4.1-0` installed, then you can simply symlink

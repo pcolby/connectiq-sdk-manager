@@ -31,3 +31,10 @@ while IFS= read -r assetInfo; do
   curl --location --output "${outputPath}" --progress-bar "${downloadUrl}"
   chmod u+x "${outputPath}"
 done < <(jq --compact-output '.assets[]|select(.name|test("\\.AppImage$"))' <<< "${releaseInfo}" || :)
+
+[[ -L '/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0' ]] || {
+  echo -e "\nNote, the required webkit2gtk-4.0 symlink doesn't exist. Recommend you run:\n"
+  echo '  sudo apt install libwebkit2gtk-4.1-0'
+  echo '  sudo ln -sf webkit2gtk-4.1 /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0'
+  echo -e "\nSee https://github.com/pcolby/connectiq-sdk-manager for details."
+}

@@ -116,7 +116,7 @@ jobs:
       - name: Remove old AppImages
         if: github.ref_name == 'main'
         run: >-
-          gh release view continuous --json assets --jq '.assets[]|select(.name|test(".AppImage$"))|name' |
+          gh release view continuous --json assets --jq '.assets[]|select(.name|test(".AppImage$")).name' |
             xargs -I{} gh release delete-asset 'continuous' '{}'
         env:
           GH_REPO: ${{ github.repository }}

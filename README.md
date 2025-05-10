@@ -13,10 +13,10 @@ an [AppImage][], along with ~all~ most of its dependencies.
 ## License
 
 > [!IMPORTANT]
-
-The code in this repository is freely usable under the highly-permissive [MIT license][], however the packaged
-[SDK Manager][] is subject to [Garmin][]'s [Connect IQ SDK license], so please be sure to accept that license *before*
-using any of the AppImages from this project.
+>
+> The code in this repository is freely usable under the highly-permissive [MIT license][], however the packaged
+> [SDK Manager][] is subject to [Garmin][]'s [Connect IQ SDK license], so please be sure to accept that license *before*
+> using any of the AppImages from this project.
 
 ## How to Use
 

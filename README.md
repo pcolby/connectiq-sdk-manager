@@ -10,28 +10,78 @@ which Ubuntu stopped shipping sometime before 24.04, but [Garmin][] has still no
 recent version.  Because [SDK Manager][] is closed source, we cannot simply modify it. However, we *can* package it into
 an [AppImage][], along with ~all~ most of its dependencies.
 
+## License
+
+> [!IMPORTANT]
+
+The code in this repository is freely usable under the highly-permissive [MIT license][], however the packaged
+[SDK Manager][] is subject to [Garmin][]'s [Connect IQ SDK license], so please be sure to accept that license *before*
+using any of the AppImages from this project.
+
 ## How to Use
 
-First off, you do still need to make one small update to your OS as root :disappointed:
+First off, you do still need to make one small update to your OS as `root`. See [How it Works](#how-it-works) below to
+understand why.
 
-Create a symlink from the old (expected) `webkit2gtk-4.0` path to point to the newer `webkit2gtk-4.1` path:
+So, create a symlink from the old (expected) `webkit2gtk-4.0` path to point to the newer `webkit2gtk-4.1` path:
 
 ```sh
 sudo apt install libwebkit2gtk-4.1-0 # if not already installed.
 sudo ln -sf webkit2gtk-4.1 /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0
 ```
 
-> [!IMPORTANT]
-> Although the code in this repository is freely usable under the highly-permissive [MIT license][], the wrapped
-> [SDK Manager][] is subject to [Garmin][]'s own [Connect IQ SDK license], so please be sure to accept that license
-> *before* using this AppImage.
+Once the symlink is in place, simply download the latest AppImage/s from the [releases][] page, set the *execute*
+permission, and you're good to go.
 
-Once the symlink is in place, simply download the latest AppImage from the [releases][] page, unzip, and run :tada:
+There is a convenience script ([`install.sh`][]) which can be used to download the latest AppImages and make them
+*executable*, which you can run like:
 
 ```sh
-wget 'https://github.com/pcolby/connectiq-sdk-manager/releases/download/v0.1.0/connectiq-sdk-manager-1.0.13+50.AppImage.zip'
-unzip connectiq-sdk-manager-1.0.13+50.AppImage.zip
-./Connect_IQ_SDK_Manager-*-x86_64.AppImage
+curl -Ls https://raw.githubusercontent.com/pcolby/connectiq-sdk-manager/main/build-appimage.sh | bash -r
+```
+
+Here's an example output:
+
+```text
+Installing to: /home/paul/.Garmin/ConnectIQ/AppImages
+Fetching details for release: latest
+Found details for release: Continuous
+Downloading Connect_IQ_Monkey_Motion-4.2.4+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Monkey_Motion-4.2.4%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Monkey_Motion-4.2.4+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Monkey_Motion-6.4.2+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Monkey_Motion-6.4.2%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Monkey_Motion-6.4.2+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Monkey_Motion-7.4.3+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Monkey_Motion-7.4.3%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Monkey_Motion-7.4.3+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Monkey_Motion-8.1.1+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Monkey_Motion-8.1.1%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Monkey_Motion-8.1.1+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_SDK_Manager-1.0.14+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_SDK_Manager-1.0.14%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_SDK_Manager-1.0.14+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Simulator-4.2.4+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Simulator-4.2.4%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Simulator-4.2.4+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Simulator-6.4.2+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Simulator-6.4.2%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Simulator-6.4.2+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Simulator-7.4.3+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Simulator-7.4.3%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Simulator-7.4.3+65-x86_64.AppImage
+######################################################################## 100.0%
+Downloading Connect_IQ_Simulator-8.1.1+65-x86_64.AppImage
+  src: https://github.com/pcolby/connectiq-sdk-manager/releases/download/continuous/Connect_IQ_Simulator-8.1.1%2B65-x86_64.AppImage
+  dst: /home/paul/.Garmin/ConnectIQ/AppImages/Connect_IQ_Simulator-8.1.1+65-x86_64.AppImage
+######################################################################## 100.0%
 ```
 
 ## How it Works
@@ -56,14 +106,11 @@ This dialog uses a webkit instance to render, and so the `libwebkit2gtk-4.0.so.3
 included in the AppImage. However, if you have the newer `libwebkit2gtk-4.1-0` installed, then you can simply symlink
 the old path to the new one, and then invocation works just fine.
 
-Interestingly, once you've accepted the terms, and logged in to [Garmin][] (via the [SDK Manager]), the symlink does
-not appear to needed any more, and you can probaby safely remove it again. Though there's no real harm leaving it there
-either.
-
 [AppImage]: https://appimage.org/
 [Connect IQ]: https://developer.garmin.com/connect-iq/overview/
 [Connect IQ SDK license]: https://developer.garmin.com/connect-iq/sdk/
 [Garmin]: https://www.garmin.com/
+[`install.sh`]: https://github.com/pcolby/connectiq-sdk-manager/blob/main/install.sh
 [linuxdeploy]: https://github.com/linuxdeploy/linuxdeploy
 [MIT license]: LICENSE.md
 [releases]: https://github.com/pcolby/connectiq-sdk-manager/releases

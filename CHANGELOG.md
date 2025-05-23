@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased][]
+## [0.4.0][] (2025-05-23)
 
-Added a basic `install.sh` script for download the latest release assets.
+Added a basic `install.sh` script to download and install the latest release assets.
 
 ## [0.3.0][] (2025-05-10)
 
@@ -17,7 +17,8 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
-[Unreleased]: https://github.com/pcolby/connectiq-sdk-manager/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/pcolby/connectiq-sdk-manager/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.2.0
 [0.1.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.1.0

@@ -17,7 +17,6 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
-[Unreleased]: https://github.com/pcolby/connectiq-sdk-manager/compare/v0.4.0...HEAD
 [0.4.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.2.0

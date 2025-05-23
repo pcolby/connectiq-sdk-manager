@@ -106,4 +106,4 @@ sufficient.
 [SDK Manager]: https://developer.garmin.com/connect-iq/sdk/
 [Ubuntu 22.04]: https://ubuntu.com/blog/tag/22-04-lts
 [Ubuntu 24.04]: https://ubuntu.com/blog/tag/ubuntu-24-04-lts
-[workflow]: .github/workflows/package.yaml
+[workflow]: .github/workflows/build.yaml

@@ -90,7 +90,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Update release timestamp
-        run:
+        run: |
           gh release edit continuous --draft=true
           gh release edit continuous --draft=false --latest
         env:

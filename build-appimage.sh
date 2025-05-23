@@ -90,7 +90,7 @@ function buildManager {
   LINUXDEPLOY_OUTPUT_VERSION="${appVersion}" \
   "${LINUXDEPLOY}" --appdir "${appDirPath}" --desktop-file "${appDirPath}.desktop" \
     --executable "${appDirPath}/usr/bin/${binName}" --icon-file "${BUILD_DIR}/connectiq-icon.png" --plugin gtk \
-    --output appimage
+    --plugin webkitmod --output appimage
 }
 
 function buildSdk {

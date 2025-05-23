@@ -32,6 +32,7 @@ jobs:
           ls -1 Connect_IQ_*.AppImage | sed -Ee 's/^Connect_IQ_([^-]+)-/\L\1\E=&/' | tee -a "${GITHUB_OUTPUT}"
         env:
           BUILD_ID: ${{ github.run_number }}
+          LINUXDEPLOY_WEBKITMOD_VERBOSE: yes
           SDK_VERSION: ${{ matrix.sdk }}
       - run: find .
       - name: Upload SDK Manager AppImage

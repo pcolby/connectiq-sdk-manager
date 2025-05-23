@@ -89,6 +89,13 @@ jobs:
             --raw-field "sha=${GITHUB_SHA}"
         env:
           GH_TOKEN: ${{ github.token }}
+      - name: Update release timestamp
+        run:
+          gh release edit continuous --draft=true
+          gh release edit continuous --draft=false --latest
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
 
   draft:
     name: Draft release

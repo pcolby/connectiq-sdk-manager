@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 (_unreleased_)
+
+Updated `install.sh` to only install the latest `simulator` and `monkeymotion` versions that match installed SDK's
+major version/s.
+
+Now releasing all available SDK versions for those that need specific, non-latest versions.
+
 ## [0.5.0][] (2025-05-24)
 
 Added a custom linuxdeploy plugin to modifiy the `libwebkit2gtk` library to no longer need a symlink.

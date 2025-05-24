@@ -30,7 +30,7 @@ function buildAll {
   echo 'Building AppImages for SDK manager, and all available SDK versions...' >&2
   buildManager
   while IFS= read -d '' -r version; do
-    buildSdk "${version}"
+    buildSdk "${version}" < /dev/null
   done < <(jq --raw-output0 '.[].version' <<< "${sdksList}" || :)
 }
 
@@ -51,20 +51,20 @@ function buildManager {
   fi
 
   # Download the SDK manager
-  [[ -s "${BUILD_DIR}/${mgrFileName}" && -n "${force}" ]] || {
+  [[ -s "${BUILD_DIR}/${mgrFileName}" && -z "${force}" ]] || {
     echo "  - fetching: ${mgrFileName}" >&2
     curl --create-dirs --fail --location --output-dir "${BUILD_DIR}" --progress-bar --remote-name \
       "${BASE_URL}/sdk-manager/${mgrFileName}"
   }
 
   # Extract the SDK manager.
-  [[ -s "${BUILD_DIR}/${mgrDirName}" && -n "${force}" ]] || {
+  [[ -s "${BUILD_DIR}/${mgrDirName}" && -z "${force}" ]] || {
     echo "  - extracting to: ${BUILD_DIR}/${mgrDirName}" >&2
     unzip ${force:+-o} -q "${BUILD_DIR}/${mgrFileName}" -d "${BUILD_DIR}/${mgrDirName}"
   }
 
   # Extract and convert the Connect IQ icon.
-  [[ -s "${BUILD_DIR}/connectiq-icon.png" && -n "${force}" ]] || {
+  [[ -s "${BUILD_DIR}/connectiq-icon.png" && -z "${force}" ]] || {
     echo "  - extracting icon to: ${BUILD_DIR}/connectiq-icon.png" >&2
     convert "${BUILD_DIR}/${mgrDirName}/share/sdkmanager/connectiq-icon.png" -gravity Center -crop '192x192+0+0' \
       "${BUILD_DIR}/connectiq-icon.png"
@@ -108,7 +108,7 @@ function buildSdk {
   local -r sdkVersionName="${sdkTitle#Connect IQ }"
   local -r appVersion="${sdkVersionName// /-}${BUILD_ID:++${BUILD_ID}}"
 
-  [[ -s "${BUILD_DIR}/connectiq-icon.png" && -n "${force}" ]] || {
+  [[ -s "${BUILD_DIR}/connectiq-icon.png" && -z "${force}" ]] || {
     echo '  - fetching SDK manager for Connect IQ icon' >&2
     buildManager iconOnly
   }
@@ -123,14 +123,14 @@ function buildSdk {
     fi
 
     # Download the SDK (note, the 'Simulator' check is to prevent 'forcing' the download twice).
-    [[ ( -s "${BUILD_DIR}/${sdkFileName}" && -n "${force}" ) || "${app}" == 'Simulator' ]] || {
+    [[ ( -s "${BUILD_DIR}/${sdkFileName}" && -z "${force}" ) || "${app}" == 'Simulator' ]] || {
       echo "  - fetching: ${sdkFileName}" >&2
       curl --create-dirs --fail --location --output-dir "${BUILD_DIR}" --progress-bar --remote-name \
         "${BASE_URL}/sdks/${sdkFileName}"
     }
 
     # Extract the SDK.
-    [[ ( -s "${BUILD_DIR}/${sdkDirName}" && -n "${force}" ) || "${app}" == 'Simulator' ]] || {
+    [[ ( -s "${BUILD_DIR}/${sdkDirName}" && -z "${force}" ) || "${app}" == 'Simulator' ]] || {
       echo "  - extracting to: ${BUILD_DIR}/${sdkDirName}" >&2
       unzip ${force:+-o} -q "${BUILD_DIR}/${sdkFileName}" -d "${BUILD_DIR}/${sdkDirName}"
     }

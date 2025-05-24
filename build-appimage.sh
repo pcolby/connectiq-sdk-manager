@@ -63,7 +63,7 @@ function buildManager {
     unzip ${force:+-o} -q "${BUILD_DIR}/${mgrFileName}" -d "${BUILD_DIR}/${mgrDirName}"
   }
 
-  # Extract and convert the Conect IQ icon.
+  # Extract and convert the Connect IQ icon.
   [[ -s "${BUILD_DIR}/connectiq-icon.png" && -n "${force}" ]] || {
     echo "  - extracting icon to: ${BUILD_DIR}/connectiq-icon.png" >&2
     convert "${BUILD_DIR}/${mgrDirName}/share/sdkmanager/connectiq-icon.png" -gravity Center -crop '192x192+0+0' \

@@ -19,7 +19,7 @@ jobs:
         run: |
           set -o errexit -o noclobber -o nounset -o pipefail
           json=$(curl -sL "${BASE_URL}/sdk-manager/sdk-manager.json")
-          diff - <(jq --raw-output '.version' <<< 'mgr.json') <<< '1.0.14'
+          diff - <(jq --raw-output '.version' <<< "${json}") <<< '1.0.14'
           json=$(curl -sL "${BASE_URL}/sdks/sdks.json")
           diff -u .github/workflows/versions.json <(jq '[.[].version]|sort_by(split(".")[]|tonumber)' 'sdks.json')
         env:

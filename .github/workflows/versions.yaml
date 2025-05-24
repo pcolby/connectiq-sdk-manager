@@ -1,0 +1,26 @@
+# A simple workflow to detect when new Connect IQ SDK versions are released by Garmin.
+
+name: Versions
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '30 17 * * *' # Daily, 03:30 AEST / 04:30 AEDT.
+
+permissions: { } # ie none.
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check versions
+        run: |
+          set -o errexit -o noclobber -o nounset -o pipefail
+          json=$(curl -sL "${BASE_URL}/sdk-manager/sdk-manager.json")
+          diff - <(jq --raw-output '.version' <<< 'mgr.json') <<< '1.0.14'
+          json=$(curl -sL "${BASE_URL}/sdks/sdks.json")
+          diff -u .github/workflows/versions.json <(jq '[.[].version]|sort_by(split(".")[]|tonumber)' 'sdks.json')
+        env:
+          BASE_URL: https://developer.garmin.com/downloads/connect-iq

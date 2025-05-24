@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0 (_unreleased_)
+## [0.5.0][] (2025-05-24)
 
 Added a custom linuxdeploy plugin to modifiy the `libwebkit2gtk` library to no longer need a symlink.
 
@@ -23,6 +23,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.5.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.5.0
 [0.4.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.2.0

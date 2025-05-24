@@ -4,7 +4,7 @@
 
 Added a custom linuxdeploy plugin to modifiy the `libwebkit2gtk` library to no longer need a symlink.
 
-The packaged AppImage/s no long have any `root` user prerequisites.
+The packaged AppImage/s no longer have any `root` user prerequisites.
 
 ## [0.4.0][] (2025-05-23)
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 (_unreleased_)
+## [0.6.0][] (2025-05-25)
 
 Updated `install.sh` to only install the latest `simulator` and `monkeymotion` versions that match installed SDK's
 major version/s.

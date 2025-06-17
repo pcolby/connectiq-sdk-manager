@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.1][] (2025-06-18)
+
+Added Connect IQ SDK v8.2.0.
+
 ## [0.6.0][] (2025-05-25)
 
 Updated `install.sh` to only install the latest `simulator` and `monkeymotion` versions that match installed SDK's
@@ -30,6 +34,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.6.1]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.1
 [0.6.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.0
 [0.5.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.5.0
 [0.4.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.4.0

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.2][] (2025-06-21)
+
+Bumped Connect IQ SDK Manager to v1.0.15 ([8d6d465][]), and added Connect IQ SDK v8.2.1 ([c0aa0bc][]).
+
+Note, also removed Connect IQ SDK v8.2.0, as Garmin has dropped it from their manifest ([`sdks.json`][]).
+
 ## [0.6.1][] (2025-06-18)
 
 Added Connect IQ SDK v8.2.0.
@@ -34,6 +40,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.6.2]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.2
 [0.6.1]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.1
 [0.6.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.0
 [0.5.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.5.0
@@ -43,5 +50,8 @@ Initial release to generate a single AppImage for the latest Connect IQ SDK Mana
 [0.1.0]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.1.0
 
 [433ef16]: https://github.com/pcolby/connectiq-sdk-manager/commit/433ef1699dc39e531ad10efc6d3e761ad9d11bd4
+[8d6d465]: https://github.com/pcolby/connectiq-sdk-manager/commit/8d6d46529cc9b8ca2c395eccb41ad1bd910d3413
+[c0aa0bc]: https://github.com/pcolby/connectiq-sdk-manager/commit/c0aa0bc6a5e4334e195475226a805c23797cd091
 
 [continuous]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/continuous
+[`sdks.json`]: https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json

@@ -107,7 +107,8 @@ jobs:
           - 7.4.3
           - 8.1.0
           - 8.1.1
-          - 8.2.0
+          # 8.2.0 Removed from Garmin's manifest (`sdks.json`), around 2025-06-20Z.
+          - 8.2.1
       fail-fast: false
 
   # This could be part of the pkg job above, but it uses elevated permissions, not required for the pkg steps.

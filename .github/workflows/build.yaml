@@ -56,6 +56,7 @@ jobs:
           name: ${{ steps.appimage.outputs.simulator }}
           path: ${{ steps.appimage.outputs.simulator }}
           if-no-files-found: error
+    timeout-minutes: 15
     strategy:
       matrix:
         # Tip: curl https://developer.garmin.com/downloads/connect-iq/sdks/sdks.json |
@@ -138,6 +139,7 @@ jobs:
         env:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
+    timeout-minutes: 3
 
   draft:
     name: Draft release
@@ -152,6 +154,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
           REF_NAME: ${{ github.ref_name == 'main' && 'continuous' || github.ref_name }}
+    timeout-minutes: 3
 
   release:
     name: Release artifacts
@@ -181,3 +184,4 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
           REF_NAME: ${{ github.ref_name == 'main' && 'continuous' || github.ref_name }}
+    timeout-minutes: 5

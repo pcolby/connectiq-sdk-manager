@@ -25,3 +25,4 @@ jobs:
           diff -u .github/workflows/versions.json <(jq '[.[].version]|sort_by(split(".")[]|tonumber)' <<< "${json}")
         env:
           BASE_URL: https://developer.garmin.com/downloads/connect-iq
+    timeout-minutes: 3

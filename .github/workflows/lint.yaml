@@ -15,3 +15,4 @@ jobs:
       - run: npm install markdownlint-cli2 --global && markdownlint-cli2 .
       - run: find -name '*.sh' -execdir shellcheck --check-sourced --enable=all --external-sources --norc {} +
       - run: yamllint --strict .
+    timeout-minutes: 3

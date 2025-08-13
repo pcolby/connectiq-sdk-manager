@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.4][] (2025-08-13)
+
+Added Connect IQ SDK v8.2.3 ([f9cf2d9][]).
+
 ## [0.6.3][] (2025-07-19)
 
 Added Connect IQ SDK v8.2.2 ([fcffa42][]).
@@ -44,6 +48,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.6.4]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.4
 [0.6.3]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.3
 [0.6.2]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.2
 [0.6.1]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.1
@@ -57,6 +62,7 @@ Initial release to generate a single AppImage for the latest Connect IQ SDK Mana
 [433ef16]: https://github.com/pcolby/connectiq-sdk-manager/commit/433ef1699dc39e531ad10efc6d3e761ad9d11bd4
 [8d6d465]: https://github.com/pcolby/connectiq-sdk-manager/commit/8d6d46529cc9b8ca2c395eccb41ad1bd910d3413
 [c0aa0bc]: https://github.com/pcolby/connectiq-sdk-manager/commit/c0aa0bc6a5e4334e195475226a805c23797cd091
+[f9cf2d9]: https://github.com/pcolby/connectiq-sdk-manager/commit/f9cf2d9ff69059461fd663aa7914bc4b2d0236a7
 [fcffa42]: https://github.com/pcolby/connectiq-sdk-manager/commit/fcffa42d8ab5ed1bd3c4244f75fa60978ba1f3ef
 
 [continuous]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/continuous

@@ -2,7 +2,7 @@
 
 ## [0.6.5][] (2025-09-27)
 
-Added Connect IQ SDK v8.3.0.
+Added Connect IQ SDK v8.3.0 ([71a29ba][]).
 
 ## [0.6.4][] (2025-08-13)
 
@@ -66,6 +66,7 @@ Initial release to generate a single AppImage for the latest Connect IQ SDK Mana
 
 [433ef16]: https://github.com/pcolby/connectiq-sdk-manager/commit/433ef1699dc39e531ad10efc6d3e761ad9d11bd4
 [4d3fd0e]: https://github.com/pcolby/connectiq-sdk-manager/commit/4d3fd0ebc338c048c92b9b9f66c79dff752275d0
+[71a29ba]: https://github.com/pcolby/connectiq-sdk-manager/commit/71a29ba7968ef00d60c0dec336739bd7300dd734
 [8d6d465]: https://github.com/pcolby/connectiq-sdk-manager/commit/8d6d46529cc9b8ca2c395eccb41ad1bd910d3413
 [c0aa0bc]: https://github.com/pcolby/connectiq-sdk-manager/commit/c0aa0bc6a5e4334e195475226a805c23797cd091
 [fcffa42]: https://github.com/pcolby/connectiq-sdk-manager/commit/fcffa42d8ab5ed1bd3c4244f75fa60978ba1f3ef

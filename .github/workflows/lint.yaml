@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - run: npm install markdownlint-cli2 --global && markdownlint-cli2 .
+      - run: npm install markdownlint-cli2 --global && markdownlint-cli2
       - run: find -name '*.sh' -print -execdir shellcheck --check-sourced --enable=all --external-sources --norc {} +
       - run: yamllint --strict .
     timeout-minutes: 3

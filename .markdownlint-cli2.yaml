@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2025 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: MIT
 
-line-length:
-  line_length: 120
+globs:
+  - '**/*.md'

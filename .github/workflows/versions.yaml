@@ -20,9 +20,10 @@ jobs:
         run: |
           set -o errexit -o noclobber -o nounset -o pipefail
           json=$(curl -sL "${BASE_URL}/sdk-manager/sdk-manager.json")
-          diff - <(jq --raw-output '.version' <<< "${json}") <<< '1.0.15'
+          diff - <(jq --raw-output '.version' <<< "${json}" || :) <<< '1.0.15'
           json=$(curl -sL "${BASE_URL}/sdks/sdks.json")
-          diff -u .github/workflows/versions.json <(jq '[.[].version]|sort_by(split(".")[]|tonumber)' <<< "${json}")
+          diff -u .github/workflows/versions.json <(
+            jq '[.[].version]|sort_by(split(".")[]|tonumber)' <<< "${json}" || :)
         env:
           BASE_URL: https://developer.garmin.com/downloads/connect-iq
     timeout-minutes: 3

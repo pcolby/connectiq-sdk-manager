@@ -42,21 +42,21 @@ jobs:
       - run: find .
       - name: Upload SDK Manager AppImage
         if: matrix.sdk == 'manager'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.appimage.outputs.sdk_manager }}
           path: ${{ steps.appimage.outputs.sdk_manager }}
           if-no-files-found: error
       - name: Upload Monkey Motion AppImage
         if: matrix.sdk != 'manager'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.appimage.outputs.monkey_motion }}
           path: ${{ steps.appimage.outputs.monkey_motion }}
           if-no-files-found: error
       - name: Upload Simulator AppImage
         if: matrix.sdk != 'manager'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.appimage.outputs.simulator }}
           path: ${{ steps.appimage.outputs.simulator }}
@@ -182,7 +182,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
       - name: Download AppImages
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           pattern: '*.AppImage'
       - name: Release AppImages

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.6][] (2025-12-05)
+
+Added Connect IQ SDK v8.4.0.
+
 ## [0.6.5][] (2025-09-27)
 
 Added Connect IQ SDK v8.3.0 ([71a29ba][]).
@@ -52,6 +56,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.6.6]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.6
 [0.6.5]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.5
 [0.6.4]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.4
 [0.6.3]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.3

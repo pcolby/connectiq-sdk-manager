@@ -118,6 +118,7 @@ jobs:
           - 8.2.2
           - 8.2.3
           - 8.3.0
+          - 8.4.0
       fail-fast: false
 
   # This could be part of the pkg job above, but it uses elevated permissions, not required for the pkg steps.

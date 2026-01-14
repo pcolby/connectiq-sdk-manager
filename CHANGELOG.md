@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.7
+
+Removed all Connect IQ SDKs lower than v8.1.0, as Garmin has dropped them from their manifest ([`sdks.json`][]).
+
 ## [0.6.6][] (2025-12-05)
 
 Added Connect IQ SDK v8.4.0 ([225676e][]).

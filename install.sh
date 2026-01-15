@@ -1,5 +1,5 @@
 #!/usr/bin/env -S bash -r
-# SPDX-FileCopyrightText: 2025 Paul Colby <git@colby.id.au>
+# SPDX-FileCopyrightText: 2025-2026 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: MIT
 #
 # Usage: curl -Ls https://raw.githubusercontent.com/pcolby/connectiq-sdk-manager/main/build-appimage.sh | bash -r

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SPDX-FileCopyrightText: 2025 Paul Colby <git@colby.id.au>
+# SPDX-FileCopyrightText: 2025-2026 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: MIT
 #
 # A custom linuxdeploy plugin to modify the `libwebkit2gtk-4.0.so.37` libarary to point to

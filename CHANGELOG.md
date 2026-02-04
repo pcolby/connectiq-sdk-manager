@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.8][] (2026-02-05)
+
+Added Connect IQ SDK v8.4.1.
+
 ## [0.6.7][] (2026-01-15)
 
 Removed all Connect IQ SDKs lower than v8.1.0 ([2e22787][]), as Garmin has dropped them from their manifest
@@ -61,6 +65,7 @@ with the SDK manager itself.
 
 Initial release to generate a single AppImage for the latest Connect IQ SDK Manager.
 
+[0.6.8]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.8
 [0.6.7]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.7
 [0.6.6]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.6
 [0.6.5]: https://github.com/pcolby/connectiq-sdk-manager/releases/tag/v0.6.5

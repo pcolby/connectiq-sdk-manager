@@ -42,21 +42,21 @@ jobs:
       - run: find .
       - name: Upload SDK Manager AppImage
         if: matrix.sdk == 'manager'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.appimage.outputs.sdk_manager }}
           path: ${{ steps.appimage.outputs.sdk_manager }}
           if-no-files-found: error
       - name: Upload Monkey Motion AppImage
         if: matrix.sdk != 'manager'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.appimage.outputs.monkey_motion }}
           path: ${{ steps.appimage.outputs.monkey_motion }}
           if-no-files-found: error
       - name: Upload Simulator AppImage
         if: matrix.sdk != 'manager'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.appimage.outputs.simulator }}
           path: ${{ steps.appimage.outputs.simulator }}

@@ -25,7 +25,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 echo "Patching: ${appDir:?Missing required option: --appdir}/${FILE_TO_PATCH}"
-sed "-Ei${LINUXDEPLOY_WEBKITMOD_VERBOSE:+.bak}" -e "s|/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0|${appDir}&|g" "${appDir}/${FILE_TO_PATCH}"
+#sed "-Ei${LINUXDEPLOY_WEBKITMOD_VERBOSE:+.bak}" -e "s|/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0|${appDir}&|g" "${appDir}/${FILE_TO_PATCH}"
 [[ ! -v LINUXDEPLOY_WEBKITMOD_VERBOSE ]] || {
   diff -u <(hexdump -C "${appDir}/${FILE_TO_PATCH}.bak" || :) <(hexdump -C "${appDir}/${FILE_TO_PATCH}" || :) && rc="$?" || rc="$?"
   [[ "${rc}" -eq 1 ]]

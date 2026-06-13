@@ -98,7 +98,7 @@ function buildManager {
     --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitNetworkProcess" \
     --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitWebProcess" \
     --icon-file "${BUILD_DIR}/connectiq-icon.png" \
-    --library "${appDirPath}/usr/lib/libwebkit2gtk-4.0.so.37" \
+    --library "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so" \
     --plugin gtk --plugin webkitmod --output appimage
 }
 

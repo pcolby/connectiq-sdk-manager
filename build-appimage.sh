@@ -74,7 +74,7 @@ function buildManager {
   # Build the AppDir
   local -r appDirPath="${BUILD_DIR}/${mgrDirName}-${binName}"
   echo "  - constructing AppDir: ${appDirPath}" >&2
-  mkdir -p "${appDirPath}/usr/"{bin,share}
+  mkdir -p "${appDirPath}/usr/"{bin,lib/x86_64-linux-gnu,share}
   cp --archive "${BUILD_DIR}/${mgrDirName}/bin/${binName}" "${appDirPath}/usr/bin"
   cp --archive "${BUILD_DIR}/${mgrDirName}/share/${binName}" "${appDirPath}/usr/share/AppRun"
 

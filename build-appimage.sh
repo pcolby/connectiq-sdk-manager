@@ -78,6 +78,9 @@ function buildManager {
   cp --archive "${BUILD_DIR}/${mgrDirName}/bin/${binName}" "${appDirPath}/usr/bin"
   cp --archive "${BUILD_DIR}/${mgrDirName}/share/${binName}" "${appDirPath}/usr/share/AppRun"
 
+  echo '  - importing webkit2gtk-4.0 to AppDir'
+  cp --archive '/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0' "${appDirPath}/usr/lib/x86_64-linux-gnu/"
+
   echo "  - generating desktop file: ${appDirPath}.desktop" >&2
   # See https://specifications.freedesktop.org/desktop-entry-spec/latest/recognized-keys.html
   AppDirName="${appName}" \

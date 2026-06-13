@@ -92,8 +92,14 @@ function buildManager {
   echo "  - building AppImage: ${appImagePathName}" >&2
   LINUXDEPLOY_OUTPUT_VERSION="${appVersion}" \
   "${LINUXDEPLOY}" --appdir "${appDirPath}" --desktop-file "${appDirPath}.desktop" \
-    --executable "${appDirPath}/usr/bin/${binName}" --icon-file "${BUILD_DIR}/connectiq-icon.png" --plugin gtk \
-    --plugin webkitmod --output appimage
+    --executable "${appDirPath}/usr/bin/${binName}" \
+    --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/MiniBrowser" \
+    --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitGPUProcess" \
+    --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitNetworkProcess" \
+    --executable "${appDirPath}/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitWebProcess" \
+    --icon-file "${BUILD_DIR}/connectiq-icon.png" \
+    --library "${appDirPath}/usr/lib/libwebkit2gtk-4.0.so.37" \
+    --plugin gtk --plugin webkitmod --output appimage
 }
 
 function buildSdk {
